@@ -219,4 +219,403 @@ margin-top:20px;
 
 .whatsapp-btn:hover{
     background:#1da851;
+<a href="https://wa.me/40712345678?text=Bună!%20Aș%20dori%20mai%20multe%20detalii%20despre%20Xiaomi%20Electric%20Scooter%20Elite." target="_blank" class="whatsapp-btn">
+⚡ Comandă Xiaomi Elite
+</a>
+}
+<a href="https://wa.me/40712345678?text=Bună!%20Vreau%20să%20comand%20Navee%20V40." target="_blank" class="whatsapp-btn">
+🛒 Comandă Navee V40
+</a>
+<div class="product-card">
+  <img src="images/xiaomi-elite.jpg" alt="Xiaomi Elite">
+
+  <h2>🛴 Xiaomi Electric Scooter Elite</h2>
+
+  <p>⚡ Putere: 700W</p>
+  <p>🔋 Autonomie: 55 km</p>
+  <p>🚀 Viteză: 25 km/h</p>
+  <p>💰 Preț: 2.499 lei</p>
+
+  <a href="https://wa.me/40712345678?text=Bună!%20Vreau%20Xiaomi%20Elite." 
+     target="_blank" class="buy-btn">
+     💬 Comandă pe WhatsApp
+  </a>
+</div>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+}
+
+.product-card{
+    width:280px;
+    background:#fff;
+    padding:15px;
+    margin:15px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    display:inline-block;
+    vertical-align:top;
+    text-align:center;
+}
+
+.product-card img{
+    width:100%;
+    border-radius:10px;
+}
+
+.buy-btn{
+    display:block;
+    margin-top:10px;
+    padding:12px;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.buy-btn:hover{
+    background:#1ebe5d;
+}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Trotinete Ieftine din România</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <img src="images/logo.png" class="logo">
+  <h1>🛴 Trotinete Ieftine din România</h1>
+
+  <input type="text" id="search" placeholder="Caută trotinetă..." onkeyup="searchProducts()">
+</header>
+
+<section class="products" id="productList">
+
+  <div class="card" data-name="xiaomi scooter 5">
+    <img src="images/xiaomi.jpg">
+    <h2>Xiaomi Scooter 5</h2>
+    <p>⚡ 700W | 🔋 60 km</p>
+    <p class="price">2.499 lei</p>
+    <button onclick="addToCart('Xiaomi Scooter 5')">Adaugă în coș</button>
+    <a class="btn" href="https://wa.me/40712345678?text=Vreau%20Xiaomi%20Scooter%205">WhatsApp</a>
+  </div>
+
+  <div class="card" data-name="navee v40">
+    <img src="images/navee.jpg">
+    <h2>Navee V40</h2>
+    <p>⚡ 600W | 🔋 50 km</p>
+    <p class="price">1.999 lei</p>
+    <button onclick="addToCart('Navee V40')">Adaugă în coș</button>
+    <a class="btn" href="https://wa.me/40712345678?text=Vreau%20Navee%20V40">WhatsApp</a>
+  </div>
+
+</section>
+
+<!-- COȘ -->
+<div id="cart">
+  <h3>🛒 Coș</h3>
+  <ul id="cartItems"></ul>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+body{
+  font-family:Arial;
+  margin:0;
+  background:#f5f5f5;
+  text-align:center;
+}
+
+header{
+  background:#00c853;
+  padding:20px;
+  color:white;
+}
+
+.logo{
+  width:100px;
+}
+
+#search{
+  margin-top:10px;
+  padding:10px;
+  width:60%;
+  border-radius:8px;
+  border:none;
+}
+
+.products{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:20px;
+}
+
+.card{
+  background:white;
+  width:250px;
+  margin:10px;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img{
+  width:100%;
+}
+
+.price{
+  color:#00c853;
+  font-weight:bold;
+}
+
+button, .btn{
+  display:block;
+  margin-top:8px;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+button{
+  background:#2196f3;
+  color:white;
+}
+
+.btn{
+  background:#25D366;
+  color:white;
+}
+
+#cart{
+  position:fixed;
+  right:10px;
+  top:10px;
+  background:white;
+  padding:10px;
+  width:200px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+let cart = [];
+
+function addToCart(item){
+  cart.push(item);
+  updateCart();
+}
+
+function updateCart(){
+  let list = document.getElementById("cartItems");
+  list.innerHTML = "";
+
+  cart.forEach((item)=>{
+    let li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+}
+
+function searchProducts(){
+  let input = document.getElementById("search").value.toLowerCase();
+  let cards = document.getElementsByClassName("card");
+
+  for(let i=0;i<cards.length;i++){
+    let name = cards[i].getAttribute("data-name");
+    if(name.includes(input)){
+      cards[i].style.display = "block";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
+}
+      /trotinete-site
+ ├── index.html
+ ├── product.html
+ ├── style.css
+ ├── script.js
+ ├── /images
+ │     ├── logo.png
+ │     ├── xiaomi.jpg
+ │     ├── navee.jpg
+      <!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Trotinete Ieftine România</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <img src="images/logo.png" class="logo">
+  <input type="text" placeholder="Caută trotinete...">
+</header>
+
+<nav>
+  <a href="#">Toate</a>
+  <a href="#">Xiaomi</a>
+  <a href="#">Navee</a>
+  <a href="#">Reduceri</a>
+</nav>
+
+<h2 class="title">🔥 Cele mai vândute trotinete</h2>
+
+<section class="grid">
+
+  <a href="product.html" class="card">
+    <img src="images/xiaomi.jpg">
+    <h3>Xiaomi Scooter 5</h3>
+    <p>2.499 lei</p>
+    <button>Vezi produs</button>
+  </a>
+
+  <a href="product.html" class="card">
+    <img src="images/navee.jpg">
+    <h3>Navee V40</h3>
+    <p>1.999 lei</p>
+    <button>Vezi produs</button>
+  </a>
+
+</section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Produs</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <img src="images/logo.png" class="logo">
+</header>
+
+<section class="product-page">
+
+  <img src="images/xiaomi.jpg">
+
+  <div>
+    <h1>Xiaomi Electric Scooter 5</h1>
+    <p>⚡ Putere: 700W</p>
+    <p>🔋 Autonomie: 60 km</p>
+    <p>🚀 Viteză: 25 km/h</p>
+    <h2>2.499 lei</h2>
+
+    <a class="whatsapp"
+       href="https://wa.me/40712345678?text=Vreau%20Xiaomi%20Scooter%205">
+       💬 Cumpără pe WhatsApp
+    </a>
+  </div>
+
+</section>
+
+</body>
+</html>
+body{
+  font-family:Arial;
+  margin:0;
+  background:#f2f3f5;
+}
+
+header{
+  background:white;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+  width:90px;
+}
+
+header input{
+  width:60%;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+nav{
+  background:#00c853;
+  padding:10px;
+  text-align:center;
+}
+
+nav a{
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.title{
+  margin:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  padding:10px;
+  border-radius:10px;
+  text-decoration:none;
+  color:black;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card img{
+  width:100%;
+}
+
+.card button{
+  width:100%;
+  padding:10px;
+  background:#00c853;
+  color:white;
+  border:none;
+  border-radius:8px;
+}
+
+.product-page{
+  display:flex;
+  gap:20px;
+  padding:20px;
+  background:white;
+  margin:20px;
+  border-radius:10px;
+}
+
+.product-page img{
+  width:300px;
+}
+
+.whatsapp{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
 }
